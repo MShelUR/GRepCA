@@ -1,12 +1,12 @@
-# GReCA: Git Repository Commit Analyzer
+# GRepCA: Git Repository Commit Analyzer
 
 This project was developed for the AoIR 2026 extended abstract *Blame Git: Merging Ideologies and Version Control in Software Development*.
 
-GReCA is a Python tool that analyzes and graphs development trends that are correlated with the adoption of Git, the Version Control System.
+GRepCA is a Python tool that analyzes and graphs development trends that are correlated with the adoption of Git, the Version Control System.
 
 ## Metrics
 
-The primary metrics that GReCA computes about a repository are, per month timestep:
+The primary metrics that GRepCA computes about a repository are, per month timestep:
 
 General engagement metrics:
 - Number of commits made
@@ -23,13 +23,13 @@ Scale of changes metrics:
 - Average standard deviation of line numbers edited
 - Median standard deviation of line numbers edited
 
-Additionally, GReCA produces TSV (Tab-Separated Values) files with raw information about every commit that was integrated into the main branch of an analyzed repository. These files are saved into the `TSVs` folder during graph generation, and can be imported into any tool that can read TSVs for further analysis.
+Additionally, GRepCA produces TSV (Tab-Separated Values) files with raw information about every commit that was integrated into the main branch of an analyzed repository. These files are saved into the `TSVs` folder during graph generation, and can be imported into any tool that can read TSVs for further analysis.
 
 ## Requirements
 
 ### Python 3.11
 
-GReCA primarily uses Python 3.11, which can be installed via [python.org](https://www.python.org/downloads/release/python-3110/). 
+GRepCA primarily uses Python 3.11, which can be installed via [python.org](https://www.python.org/downloads/release/python-3110/). 
 
 ## Installation
 
