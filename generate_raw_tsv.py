@@ -1,11 +1,16 @@
 import csv
 import json
 import os
+from pathlib import Path
 import re
 import subprocess
 import sys
 
 from tqdm import tqdm
+
+
+# first, make sure raw_tsv exists
+Path("raw_tsv").mkdir(exist_ok=True)
 
 
 
