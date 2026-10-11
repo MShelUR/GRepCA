@@ -33,13 +33,7 @@ def read_csv(path):
     return times, values
 
 
-def show_charts(
-    times,
-    values,
-    output_path=None,
-    smoothing=1,
-    show_raw=False,
-):
+def show_charts(times,values,output_path=None,smoothing=1,show_raw=False,):
     metrics = list(values.keys())
 
     if len(metrics) != 9:
@@ -109,6 +103,18 @@ def show_charts(
         )
         axis.set_ylabel("Value", fontsize=9)
 
+        date_range = (
+            f"{series.index.min():%Y-%m-%d} to "
+            f"{series.index.max():%Y-%m-%d}"
+        )
+
+        axis.set_title(
+            f"{metric}\n{date_range}",
+            fontsize=9,
+            fontweight="semibold",
+            pad=8,
+        )
+
         # Keep the background grid subtle.
         axis.grid(
             True,
@@ -139,12 +145,9 @@ def show_charts(
         if show_raw and smoothing > 1:
             axis.legend(fontsize=7, frameon=False, loc="best")
 
-    # Only label the bottom row's x-axes.
-    for axis in axes[-1, :]:
         axis.set_xlabel("Month", fontsize=9)
-
-    for axis in axes.flat:
-        axis.label_outer()
+        axis.tick_params(axis="x", labelbottom=True)   
+        
 
     fig.tight_layout(pad=2.0)
 
@@ -197,13 +200,15 @@ def main():
 
     times, values = read_csv(args.csv_path)
 
+    output = args.output or args.csv_path.replace("parsed_csv","results").replace(".csv",".png")
+
     if not times:
         raise ValueError("The CSV contains no data rows.")
 
     show_charts(
         times,
         values,
-        args.output,
+        output,
         smoothing=args.smooth,
         show_raw=args.show_raw,
     )
